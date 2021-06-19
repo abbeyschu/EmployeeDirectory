@@ -1,0 +1,15 @@
+.button{
+    background-color: gray;
+    margin: 5px;
+    font-size: 20pt
+}
+
+.form-control{
+    margin: 5px;
+    font-size: 20pt;
+}
+
+.searchInput{
+    justify-content: center;
+    text-align: center;
+}
