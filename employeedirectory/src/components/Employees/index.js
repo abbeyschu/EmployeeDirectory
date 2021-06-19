@@ -1,26 +1,29 @@
 import React, { Component } from "react";
 import "./style.css";
-import API from "../../utils/API"
 import SearchInput from "../SearchInput";
 import SearchResults from "../SearchResults"
+import API from "../../utils/API"
 
 class Employees extends Component {
   state = {
     search: "",
     employees: [],
-    filterEmployees: [],
     error: ""
   };
 
   // When the component mounts, call API
   componentDidMount() {
     API.getEmployeeList()
-      .then(res => this.setState({ employees: res.data.results },{ filteredEmployees: res.data.results }))
+      .then(res => this.setState({ employees: res.data.results }))
       .catch(err => console.log(err));
   }
 
   handleInputChange = event => {
-    this.setState({ search: event.target.value });
+    // Getting the value and name of the input which triggered the change
+    let value = event.target.value;
+
+    // Updating the input's state
+    this.setState({search: value});
   };
 
   handleFormSubmit = event => {
@@ -41,7 +44,7 @@ class Employees extends Component {
             handleFormSubmit={this.handleFormSubmit}
             handleInputChange={this.handleInputChange}
           />
-          <SearchResults results={this.state.results} />
+          <SearchResults employees={this.state.employees} />
       </div>
     );
   }

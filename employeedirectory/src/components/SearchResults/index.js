@@ -7,8 +7,8 @@ function SearchResults(props) {
       {props.employees.map(employee => (
         <li key={employee} className="list-group-item">
           <img alt="Employee" src={employee.picture} className="img-fluid" />
-          <h2>{employee.name}</h2>
-          <div>{employee.location}</div>
+          <h2>{employee.name.first} {employee.name.last}</h2>
+          <div>{employee.location.city} {employee.location.state}</div>
           <div>{employee.email}</div>
           <div>{employee.phone}</div>
         </li>
