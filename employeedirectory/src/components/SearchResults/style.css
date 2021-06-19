@@ -1,0 +1,14 @@
+.employeeResults {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.oneEmployee{
+    display: flex;
+    margin: 20pt;
+    width: 25%;
+}
+
