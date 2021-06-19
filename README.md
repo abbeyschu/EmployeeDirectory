@@ -10,9 +10,9 @@ Visit this link to view the app: https://abbeyschu.github.io/EmployeeDirectory/
 ## Screenshots
 Employee Directory Layout:
 
-![Directory screenshot](./public/images/directory.png)
+![Directory screenshot](./public/directory.png)
 
 ## License
 
-[MIT](./public/images/license.txt)
+[MIT](./public/LICENSE)
 
