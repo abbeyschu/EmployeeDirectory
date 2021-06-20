@@ -35,19 +35,19 @@ class Employees extends Component {
 
     // Updating the input's state
     this.setState({search: value});
-    this.filterEmployees(value.toLowerCase().trim())
+    this.filterByEmployees(value.toLowerCase().trim())
   };
 
   handleFormSubmit = event => {
     event.preventDefault();
-    // API.getEmployeesOfName(this.state.search)
-    //   .then(res => {
-    //     if (res.data.status === "error") {
-    //       throw new Error(res.data.message);
-    //     }
-    //     this.setState({ employees: res.data.results, error: "" });
-    //   })
-    //   .catch(err => this.setState({ error: err.message }));
+    API.filterByEmployees(this.state.search)
+      .then(res => {
+        if (res.data.status === "error") {
+          throw new Error(res.data.message);
+        }
+        this.setState({ employees: res.data.results, error: "" });
+      })
+      .catch(err => this.setState({ error: err.message }));
   };
 
   sortByName = (key, primary = 0, secondary = 0) => {
@@ -84,15 +84,15 @@ class Employees extends Component {
     }
   };
 
-  filterEmployees = (input) => {
-    if (input) {
+  filterByEmployees = (value) => {
+    if (value) {
       this.setState({
         filterEmployees: this.state.employees.filter((employee) => {
           return (
             employee.name.first
               .toLowerCase()
               .concat(" ", employee.name.last.toLowerCase())
-              .includes(input)
+              .includes(value)
             // employee.phone.includes(input),
             // employee.email.includes(input)
           );
@@ -109,12 +109,13 @@ class Employees extends Component {
           <SearchInput
             handleFormSubmit={this.handleFormSubmit}
             handleInputChange={this.handleInputChange}
+            sortByName={this.sortByName}
+            filterByEmployees={this.filterByEmployees}
           />
           <SearchResults 
           state={this.state}
           employees={this.state.employees} 
-          sortByName={this.sortByName}
-          filterEmployees={this.filterEmployees}
+          filterEmployees={this.state.filterEmployees}
           />
       </div>
     );
