@@ -40,14 +40,14 @@ class Employees extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    API.filterByEmployees(this.state.search)
-      .then(res => {
-        if (res.data.status === "error") {
-          throw new Error(res.data.message);
-        }
-        this.setState({ employees: res.data.results, error: "" });
-      })
-      .catch(err => this.setState({ error: err.message }));
+    // API.filterByEmployees(this.state.search)
+    //   .then(res => {
+    //     if (res.data.status === "error") {
+    //       throw new Error(res.data.message);
+    //     }
+    //     this.setState({ employees: res.data.results, error: "" });
+    //   })
+    //   .catch(err => this.setState({ error: err.message }));
   };
 
   sortByName = (key, primary = 0, secondary = 0) => {
