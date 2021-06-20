@@ -13,6 +13,15 @@ class Employees extends Component {
     error: ""
   };
 
+  get initialSortEmployees() {
+    return {
+      name: "",
+      location: "",
+      email: "",
+      phone: "",
+    };
+  }
+
   // When the component mounts, call API
   componentDidMount() {
     API.getEmployeeList()
@@ -41,7 +50,7 @@ class Employees extends Component {
     //   .catch(err => this.setState({ error: err.message }));
   };
 
-  sortBy = (key, primary = 0, secondary = 0) => {
+  sortByName = (key, primary = 0, secondary = 0) => {
     let sortedEmployees = this.state.filterEmployees;
     if (this.state.sortEmployees[key]) {
       this.setState({
@@ -67,8 +76,8 @@ class Employees extends Component {
 
       this.setState({
         filterEmployees: sortedEmployees,
-        sortDirections: {
-          ...this.initialSortDirections,
+        sortEmployees: {
+          ...this.initialSortEmployees,
           [key]: "asc",
         },
       });
@@ -83,9 +92,9 @@ class Employees extends Component {
             employee.name.first
               .toLowerCase()
               .concat(" ", employee.name.last.toLowerCase())
-              .includes(input),
-            employee.phone.includes(input),
-            employee.email.includes(input)
+              .includes(input)
+            // employee.phone.includes(input),
+            // employee.email.includes(input)
           );
         }),
       });
@@ -104,7 +113,7 @@ class Employees extends Component {
           <SearchResults 
           state={this.state}
           employees={this.state.employees} 
-          sortBy={this.sortBy}
+          sortByName={this.sortByName}
           filterEmployees={this.filterEmployees}
           />
       </div>

@@ -3,7 +3,8 @@ import "./style.css";
 
 function SearchInput(props) {
   return (
-    <form className="searchInput">
+    <div>
+    <form className="searchInput" onSubmit={props.handleFormSubmit}>
     <input
       className="form-control"
       value={props.value}
@@ -13,8 +14,9 @@ function SearchInput(props) {
       placeholder="Search by name"
     />
     <button type="submit" onClick={props.handleFormSubmit} className="button">Search</button>
-    <button className="button" onClick={props.sortByName}>Sort Alphabetically</button>
   </form>
+  <button className="button" onClick={props.sortByName}>Sort Alphabetically</button>
+  </div>
   );
 }
 
